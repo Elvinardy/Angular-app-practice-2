@@ -1,0 +1,30 @@
+{{ roomsForm.value | json }}
+
+<div *ngIf="successMsg !== ''" class="alert alert-success">{{ successMsg }}</div>
+
+<form #roomsForm="ngForm" (ngSubmit)="addRoom()">
+  <div class="form-group">
+    <input class="form-control" type="text" name="roomType" placeholder="Room Type" [(ngModel)]="room.roomType" required minlength="5" maxlength="20">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="amenities" placeholder="Room Amenities" [(ngModel)]="room.amenities" required >
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="number" name="price" placeholder="Room Price per night" [(ngModel)]="room.price" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="photos" placeholder="Photos (provide link)" [(ngModel)]="room.photos" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="datetime" name="checkinTime" placeholder="Check-In Time" [(ngModel)]="room.checkInTime" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="checkoutTimr" placeholder="Check-Out Time" [(ngModel)]="room.checkOutTime" required>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="rating" placeholder="Rating" [(ngModel)]="room.rating" required>
+  </div>
+  <div>
+    <button [disabled]="roomsForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
