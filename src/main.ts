@@ -1,3 +1,5 @@
+// Entry point for Angular where execution starts
+// Similar to Main function
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
