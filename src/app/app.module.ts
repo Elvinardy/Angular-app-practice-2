@@ -21,6 +21,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
+import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { HoverDirective } from './hover.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.compo
     EmployeesComponent,
     AppNavComponent,
     ErrorPageComponent,
-    RoomsBookingComponent
+    RoomsBookingComponent,
+    RoomsAddComponent,
+    LoginComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,7 @@ import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.compo
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    FormsModule
   ],
   providers: [
     {
