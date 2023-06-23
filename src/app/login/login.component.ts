@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +12,15 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor() { }
+  constructor(private route: Router, private loginSvc: LoginService) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    if(this.email === 'admin@email.com' && this.password === 'Admin')
-    alert('Login Successful!')
+    if(this.loginSvc.login(this.email, this.password)) {
+      this.route.navigate(['rooms']);
   }
+}
+
 }

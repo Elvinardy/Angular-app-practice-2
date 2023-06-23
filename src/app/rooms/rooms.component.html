@@ -7,8 +7,9 @@
 </div>
 <br />
 <!-- {{ roomList | json }} -->
+<router-outlet></router-outlet>
 <div>
-  <button (click)="addRoom()">
+  <button routerLink="add">
     Add Room
   </button>
 </div>
@@ -28,4 +29,5 @@
 <button (click)="deleteRoom()">Delete Room</button>
 
 <h2>{{ totalBytes }} Loaded! </h2>
+
 

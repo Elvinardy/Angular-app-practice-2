@@ -3,10 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RoomsComponent } from './rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
-import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appConfig.service';
@@ -20,26 +17,23 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { RoomsBookingComponent } from './rooms/rooms-booking/rooms-booking.component';
-import { RoomsAddComponent } from './rooms/rooms-add/rooms-add.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
+import { EmailValidatorDirective } from './emailValidator/email-validator.directive';
+import { HeaderModule } from './header/header.module';
+import { RouteConfigToken } from './services/routeConfig.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoomsComponent,
-    RoomsListComponent,
-    HeaderComponent,
     ContainerComponent,
     EmployeesComponent,
     AppNavComponent,
     ErrorPageComponent,
-    RoomsBookingComponent,
-    RoomsAddComponent,
     LoginComponent,
-    HoverDirective
+    HoverDirective,
+    EmailValidatorDirective
   ],
   imports: [
     BrowserModule,
@@ -52,7 +46,9 @@ import { HoverDirective } from './hover.directive';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+
+    HeaderModule
   ],
   providers: [
     {
@@ -63,6 +59,10 @@ import { HoverDirective } from './hover.directive';
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
       multi: true
+    },
+    {
+      provide: RouteConfigToken,
+      useValue: { title: 'Home' },
     }
   ],
   bootstrap: [AppComponent]

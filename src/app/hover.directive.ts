@@ -1,12 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Directive, ElementRef, HostListener, Inject, Input, OnInit, Renderer2 } from '@angular/core';
-
+import { Directive, ElementRef, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+// directive are helper functions for DOM elements
 @Directive({
   selector: '[appHover]'
 })
 export class HoverDirective implements OnInit {
 
-  @Input() color: string = 'red'
+  @Input() appHover: string = 'red'
 
   constructor(private element: ElementRef, private renderer: Renderer2) {
     console.log(this.element.nativeElement);
@@ -14,7 +14,7 @@ export class HoverDirective implements OnInit {
 
   ngOnInit(): void {
     /* this.element.nativeElement.style.backgroundColor = this.color; */
-    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', this.color)
+    this.renderer.setStyle(this.element.nativeElement, 'backgroundColor', this.appHover)
   }
 
   @HostListener('mouseenter') onMouseEnter() {

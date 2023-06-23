@@ -16,6 +16,7 @@ import { RoomsListComponent } from './rooms-list/rooms-list.component';
 import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, catchError, map } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-rooms',
@@ -74,7 +75,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   headerChildrenComponent!: QueryList<HeaderComponent>;
 
   // depedency injection
-  constructor(@SkipSelf() private roomService: RoomsService) { }
+  constructor(@SkipSelf() private roomService: RoomsService, private configSvc: ConfigService) { }
 
   ngAfterViewInit(): void {
     this.headerComponent.title = 'Holiday Inn';
