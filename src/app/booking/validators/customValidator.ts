@@ -2,6 +2,7 @@ import { AbstractControl } from "@angular/forms";
 
 export class CustomValidator {
   // abstractcontrol is a base class for everything
+  // validate if a particluar string is included in the user input
   static validateName(control: AbstractControl) {
     const value = control.value as string;  // casting it as a string
     if(value.includes('testing')) {
@@ -11,7 +12,7 @@ export class CustomValidator {
     }
     return null;
   }
-
+  // validate if special characters is keyed in user input
   static validateSpecialChar(char: string) {
     return (control: AbstractControl) => {
       const value = control.value as string;  // casting it as a string

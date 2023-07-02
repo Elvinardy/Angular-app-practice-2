@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,8 @@ import { HoverDirective } from './hover.directive';
 import { EmailValidatorDirective } from './emailValidator/email-validator.directive';
 import { HeaderModule } from './header/header.module';
 import { RouteConfigToken } from './services/routeConfig.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { GlobalErrorHandler } from './errorHandler.service';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,8 @@ import { RouteConfigToken } from './services/routeConfig.service';
     MatIconModule,
     MatListModule,
     FormsModule,
-
-    HeaderModule
+    HeaderModule,
+    MatSnackBarModule
   ],
   providers: [
     {
@@ -63,7 +65,11 @@ import { RouteConfigToken } from './services/routeConfig.service';
     {
       provide: RouteConfigToken,
       useValue: { title: 'Home' },
-    }
+    },
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
   ],
   bootstrap: [AppComponent]
 })

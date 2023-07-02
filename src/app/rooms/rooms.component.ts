@@ -17,6 +17,7 @@ import { RoomsService } from './services/rooms.service';
 import { Observable, Subject, Subscription, catchError, map } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
 import { ConfigService } from '../services/config.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-rooms',
@@ -49,6 +50,8 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     })
   )
 
+  priceFilter = new FormControl(99999);
+
   roomsCount$ = this.roomService.getRooms$.pipe(
     map((rooms) => rooms.length)
   )
@@ -78,7 +81,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   constructor(@SkipSelf() private roomService: RoomsService, private configSvc: ConfigService) { }
 
   ngAfterViewInit(): void {
-    this.headerComponent.title = 'Holiday Inn';
+    // this.headerComponent.title = 'Holiday Inn';
     //this.headerChildrenComponent.last.title = "Last title!";
   }
 

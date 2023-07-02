@@ -14,8 +14,9 @@ const routes: Routes = [
     canActivate:[LoginGuard],
     canLoad: [LoginGuard]
   }, // lazy loading of module
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
-  { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule),
+  { path: '**', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'booking/:roomid',
+  loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule),
     //canActivate: [LoginGuard]
   },
   { path: '**', component: ErrorPageComponent }

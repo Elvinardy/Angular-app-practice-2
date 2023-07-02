@@ -11,8 +11,9 @@
     <th>Check Out Time</th>
     <th>Select Room</th>
   </tr>
+  <!-- filtering example by user input / search function capability -->
   <tr [ngClass]="e ? 'even' : 'odd'"
-      *ngFor="let room of rooms; let e = even; let o = odd; let i = index">
+      *ngFor="let room of rooms! | filter : price; let e = even; let o = odd; let i = index">
     <td>{{ i + 1 }}</td>
     <td>{{ room.roomNumber }}</td>
     <td>{{ room.roomType | uppercase }}</td>
@@ -27,7 +28,7 @@
         (click)="selectRoom(room)">
           Select
       </button> -->
-      <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book Now</button>
+      <button class="btn btn-primary" [routerLink]="['/booking', room.roomNumber]">Book Now</button>
     </td>
   </tr>
 </table>

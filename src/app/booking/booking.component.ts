@@ -5,6 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { BookingService } from './booking.service';
 import { exhaustMap, mergeMap, switchMap } from 'rxjs';
 import { CustomValidator } from './validators/customValidator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-booking',
@@ -21,11 +22,14 @@ export class BookingComponent implements OnInit {
   }
 
   constructor(private configSvc: ConfigService, private fb: FormBuilder,
-    private bookingSvc: BookingService) {}
+    private bookingSvc: BookingService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // getting the roomid value from the endpoint to display in room ID section in the form
+    const roomId = this.route.snapshot.paramMap.get('roomid');
+
     this.bookingForm = this.fb.group({
-      roomId: new FormControl({ value: '2', disabled: true }, {validators: [Validators.required]}), // to disable the input and give a fixed value
+      roomId: new FormControl({ value: roomId, disabled: true }, {validators: [Validators.required]}), // to disable the input and give a fixed value
       guestEmail: ['', { updateOn: 'blur', validators: [Validators.required, Validators.email] }],
       checkinDate: [''],
       checkoutDate: [''],
@@ -59,7 +63,7 @@ export class BookingComponent implements OnInit {
   addBooking() {
     console.log(this.bookingForm.getRawValue());
     this.bookingForm.reset({
-      roomId: '1', // to disable the input and give a fixed value
+// to disable the input and give a fixed value
       guestEmail: '',
       checkinDate: '',
       checkoutDate: '',
@@ -84,7 +88,7 @@ export class BookingComponent implements OnInit {
   // setting an initial value to the form
   getBookingData() {
     this.bookingForm.patchValue({
-      roomId: '2', // to disable the input and give a fixed value
+       // to disable the input and give a fixed value
       guestEmail: 'somebody@mail.com',
       checkinDate: new Date('10-July-2023'),
       checkoutDate: '',
